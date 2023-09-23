@@ -1,0 +1,115 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: HomeActivity());
+  }
+}
+
+class HomeActivity extends StatelessWidget {
+  HomeActivity({super.key});
+
+  var myItems = [
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "My Project"
+    },
+    {
+      "img":
+          "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-xlarge_2x.jpg",
+      "title": "Its beginning"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "ALLAH please help me"
+    },
+    {
+      "img":
+          "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-xlarge_2x.jpg",
+      "title": "I feel enjoy"
+    },
+    {
+      "img":
+          "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-xlarge_2x.jpg",
+      "title": "I feel enjoy"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "Alhamdulillah"
+    },
+    {
+      "img":
+          "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-xlarge_2x.jpg",
+      "title": "I feel enjoy"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "Alhamdulillah"
+    },
+    {
+      "img":
+          "https://www.apple.com/newsroom/images/product/apps/standard/Apple-App-Store-Awards-2022-Trophy_inline.jpg.slideshow-xlarge_2x.jpg",
+      "title": "I feel enjoy"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "InSHA ALLAH"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "InSHA ALLAH"
+    },
+    {
+      "img":
+          "https://media.licdn.com/dms/image/D5603AQG32HFVg10uGg/profile-displayphoto-shrink_800_800/0/1683104723253?e=2147483647&v=beta&t=mwf3o0cr0IEF5V6cKH17v68VeH-5teRzZkjzHjS4u1I",
+      "title": "InSHA ALLAH"
+    },
+  ];
+
+  mySnackBar(context, msg) {
+    return ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(msg)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My App'),
+      ),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, crossAxisSpacing: 0, childAspectRatio: 1.2),
+        itemCount: myItems.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              mySnackBar(context, myItems[index]['title']);
+            },
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              width: double.infinity,
+              height: 210,
+              child: Image.network(
+                myItems[index]['img']!,
+                fit: BoxFit.fill,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
