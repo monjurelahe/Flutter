@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+import 'quote.dart';
+import 'dart:async';
+import 'dart:convert';
+
+
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: NinjaCard(title: 'NINJA ID CARD',),
+  ));
+}
+
+class NinjaCard extends StatefulWidget {
+  const NinjaCard({super.key, required this.title});
+  final String title;
+  @override
+  State<NinjaCard> createState() => _NinjaCard();
+}
+
+class _NinjaCard extends State<NinjaCard> {
+  int _counter = 0;
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  List<Quote> quotes = [
+    Quote(text:'Human calls me Mugdho', author: 'Oscar'),
+    Quote(text:'I am a Proud Muslim', author: 'Oscar'),
+    Quote(text:'Human calls me Mugdho', author: 'Oscar'),
+
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        backgroundColor: Colors.white24,
+        title: Text(widget.title, style: const TextStyle(color: Colors.white70, letterSpacing: 3),),
+        centerTitle: true,
+        elevation: 1,
+      ),
+      body: Column(
+        children: quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(),
+      ),
+    );
+  }
+}
