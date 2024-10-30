@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+import 'quote.dart';
+import 'dart:async';
+import 'dart:convert';
+
+
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: NinjaCard(title: 'NINJA ID CARD',),
+  ));
+}
+
+class NinjaCard extends StatefulWidget {
+  const NinjaCard({super.key, required this.title});
+  final String title;
+  @override
+  State<NinjaCard> createState() => _NinjaCard();
+}
+
+class _NinjaCard extends State<NinjaCard> {
+  int _counter = 0;
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  List<Quote> quotes = [
+    Quote(text:'Human calls me Mugdho', author: 'Oscar'),
+    Quote(text:'I am a Proud Muslim', author: 'Oscar'),
+    Quote(text:'So, here you are!', author: 'Monjur'),
+
+  ];
+
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        backgroundColor: Colors.white24,
+        title: Text(widget.title, style: const TextStyle(color: Colors.white70, letterSpacing: 3),),
+        centerTitle: true,
+        elevation: 1,
+      ),
+      body: Column(
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+      ),
+    );
+  }
+}
+
+class QuoteCard extends StatelessWidget {
+  final Quote quote;
+  QuoteCard ({required this.quote});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(17),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(quote.text, style: const TextStyle(fontSize: 15, color: Colors.blueGrey),),
+            const SizedBox(height: 11,),
+            Text(quote.author, style: const TextStyle(fontSize: 15, color: Colors.black),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
