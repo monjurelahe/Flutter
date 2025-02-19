@@ -1,0 +1,94 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+const gaibandha = 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.';
+const url = 'https://cdn.pixabay.com/photo/2025/02/09/17/58/cycling-9394894_1280.jpg';
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _imageSection(),
+            _headerSection(),
+            _navigation(),
+            _paragraph()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding _paragraph() {
+    return const Padding(padding: EdgeInsets.all(18),
+            child: Text(gaibandha),
+          );
+  }
+
+  Padding _navigation() {
+    return const Padding(padding:  EdgeInsets.all(18),
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Icon(Icons.share, color: Colors.blueGrey,),Text('Share'),
+                ],
+              ),
+
+              Column(
+                children: [
+                  Icon(Icons.near_me, color: Colors.blueGrey,),Text('Route'),
+                ],
+              ),
+
+              Column(
+                children: [
+                  Icon(Icons.call, color: Colors.blueGrey,),Text('Call'),
+                ],
+              ),
+            ],
+          ),
+          );
+  }
+
+  Padding _headerSection() {
+    return const Padding(padding: EdgeInsets.all(18),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Muslim Community', style: TextStyle(fontSize: 22, color: Colors.blueGrey),),
+                  Text('Naldanga, Gaibandha', style: TextStyle(fontSize: 12, color: Colors.blueGrey),),
+                ],
+              ),
+              Spacer(),
+              Icon(Icons.star, color: Colors.amberAccent,),
+              Text('4.9', style: TextStyle(fontWeight: FontWeight.bold),)
+            ],
+          ),
+          );
+  }
+
+  Image _imageSection() => Image.network(url, fit: BoxFit.cover,height: 300, width: double.infinity,);
+}
